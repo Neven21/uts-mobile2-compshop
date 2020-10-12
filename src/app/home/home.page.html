@@ -1,20 +1,85 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon name="menu" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
-      Blank
+      Home
     </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button *ngIf="layout=='list'" (click)="changeLayout('grid')"><ion-icon name="list" slot="icon-only"></ion-icon></ion-button>
+      <ion-button *ngIf="layout=='grid'" (click)="changeLayout('list')"><ion-icon name="grid" slot="icon-only"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list *ngIf="layout=='list'">
+    <ion-card *ngFor="let product of products" [routerLink] = "['./', product.id]">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-item>
+            <ion-thumbnail slot="start" style="width: 75px; height: auto;">
+              <ion-img [src]="product.foto">
+              </ion-img>
+            </ion-thumbnail>
+            <ion-label class="ion-text-wrap">
+              <span style="font-weight: bold;"> {{product.nama}} </span><br>
+              Rp. {{product.harga}} ,- <br>
+              Tersedia: {{product.stok  }}
+            </ion-label> 
+          </ion-item>
+       </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ion-list>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid *ngIf="layout=='grid'">
+    <ion-row *ngFor="let product of products" [routerLink] = "['./', product.id]">
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-item>
+                <ion-thumbnail slot="start" style="width: 75px; height: auto;">
+                  <ion-img [src]="product.foto">
+                  </ion-img>
+                </ion-thumbnail>
+              </ion-item>
+           </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label class="ion-text-wrap">
+              <span style="font-weight: bold;"> {{product.nama}} </span><br>
+              Rp. {{product.harga}} ,- <br>
+              Tersedia: {{product.stok  }}
+            </ion-label> 
+          </ion-card-content>
+        </ion-card>
+     </ion-col>
+     <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-item>
+              <ion-thumbnail slot="start" style="width: 75px; height: auto;">
+                <ion-img [src]="product.foto">
+                </ion-img>
+              </ion-thumbnail>
+            </ion-item>
+         </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label class="ion-text-wrap">
+            <span style="font-weight: bold;"> {{product.nama}} </span><br>
+            Rp. {{product.harga}} ,- <br>
+            Tersedia: {{product.stok  }}
+          </ion-label> 
+        </ion-card-content>
+      </ion-card>
+   </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
