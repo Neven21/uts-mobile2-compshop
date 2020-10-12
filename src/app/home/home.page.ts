@@ -15,6 +15,9 @@ export class HomePage {
   ngOnInit() {
     this.layout = 'list';
     this.products = this.productService.getAllProducts();
+    this.products = this.products.filter(product => {
+      return parseInt(product.stok) > 0;
+    });
   }
 
   changeLayout(type) {
