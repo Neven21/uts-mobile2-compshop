@@ -72,6 +72,7 @@ export class ProductsService {
     this.cpu.forEach(function (value) {
       products.push({
         id: value.id,
+        tipe: value.tipe,
         foto: value.foto,
         nama: value.merek + ' ' + value.model,
         harga: value.harga.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."),
@@ -82,6 +83,7 @@ export class ProductsService {
     this.gpu.forEach(function (value) {
       products.push({
         id: value.id,
+        tipe: value.tipe,
         foto: value.foto,
         nama: value.merek + ' ' + value.model,
         harga: value.harga.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."),
@@ -92,6 +94,7 @@ export class ProductsService {
     this.motherboard.forEach(function (value) {
       products.push({
         id: value.id,
+        tipe: value.tipe,
         foto: value.foto,
         nama: value.merek + ' ' + value.model,
         harga: value.harga.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."),
@@ -102,6 +105,7 @@ export class ProductsService {
     this.ram.forEach(function (value) {
       products.push({
         id: value.id,
+        tipe: value.tipe,
         foto: value.foto,
         nama: value.merek + ' ' + value.model,
         harga: value.harga.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."),
@@ -111,4 +115,29 @@ export class ProductsService {
 
     return [...products];
   }
+
+  getCpu(id){
+    return this.cpu = this.cpu.filter(cpu => {
+      return cpu.id = id;
+    });
+  }
+  
+  getGpu(id){
+    return this.gpu = this.gpu.filter(gpu => {
+      return gpu.id = id;
+    });
+  }
+
+  getMb(id){
+    return this.motherboard = this.motherboard.filter(mb => {
+      return mb.id = id;
+    });
+  }
+
+  getRam(id){
+    return this.ram = this.ram.filter(ram => {
+      return ram.id = id;
+    });
+  }
+  
 }

@@ -17,7 +17,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-list *ngIf="layout=='list'">
-    <ion-card *ngFor="let product of products" [routerLink] = "['./', product.id]">
+    <ion-card *ngFor="let product of products" [routerLink] = "['./', product.tipe, product.id]">
       <ion-card-header>
         <ion-card-title>
           <ion-item>
@@ -28,7 +28,7 @@
             <ion-label class="ion-text-wrap">
               <span style="font-weight: bold;"> {{product.nama}} </span><br>
               Rp. {{product.harga}} ,- <br>
-              Tersedia: {{product.stok  }}
+              Tersedia: {{product.stok}}
             </ion-label> 
           </ion-item>
        </ion-card-title>
@@ -37,7 +37,7 @@
   </ion-list>
 
   <ion-grid *ngIf="layout=='grid'">
-    <ion-row *ngFor="let product of products" [routerLink] = "['./', product.id]">
+    <ion-row *ngFor="let product of products" [routerLink] = "['./', product.tipe, product.id]">
       <ion-col>
         <ion-card>
           <ion-card-header>
@@ -54,7 +54,7 @@
             <ion-label class="ion-text-wrap">
               <span style="font-weight: bold;"> {{product.nama}} </span><br>
               Rp. {{product.harga}} ,- <br>
-              Tersedia: {{product.stok  }}
+              Tersedia: {{product.stok}}
             </ion-label> 
           </ion-card-content>
         </ion-card>
