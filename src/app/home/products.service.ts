@@ -21,7 +21,20 @@ export class ProductsService {
       thread: '36',
       harga: '10000000',
       stok: '50'
-    }
+    },
+    {
+      id: 'c2',
+      tipe: 'CPU',
+      foto: 'https://images-na.ssl-images-amazon.com/images/I/61CDr%2BCHWNL._AC_SL1500_.jpg',
+      merek: 'AMD',
+      model: 'Ryzen Threadripper 3970X',
+      base: '3.70',
+      boost: '4.50',
+      core: '32',
+      thread: '64',
+      harga: '7000000',
+      stok: '50'
+    },
   ]
 
   private gpu: Gpu[] = [
@@ -33,7 +46,16 @@ export class ProductsService {
       model: 'GeForce RTX 3080',
       harga: '9000000',
       stok: '50'
-    }
+    },
+    {
+      id: 'g2',
+      tipe: 'GPU',
+      foto: 'https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/geforce-rtx-turing/2080/gallery/geforce-rtx-2080-gallery-c-641-u.jpg',
+      merek: 'Nvidia',
+      model: 'GeForce RTX 2080',
+      harga: '7000000',
+      stok: '50'
+    },
   ]
 
   private motherboard: Motherboard[] = [
@@ -46,6 +68,17 @@ export class ProductsService {
       chipset: 'Intel Q370',
       prosesor: 'LGA 1151',
       harga: '3000000',
+      stok: '50'
+    },
+    {
+      id: 'm2',
+      tipe: 'Motherboard',
+      foto: 'https://pim-media.intel.com/pub-api/v1/imageservice/customize?url=http://images.icecat.biz/img/gallery/75776965_1233461881.jpg&height=550&width=550',
+      merek: 'Intel',
+      model: 'Gigabyte X299X Aorus Master',
+      chipset: 'Intel X299',
+      prosesor: 'LGA 2066',
+      harga: '6000000',
       stok: '50'
     }
   ]
@@ -61,7 +94,18 @@ export class ProductsService {
       ukuran: '16',
       harga: '2500000',
       stok: '50'
-    }
+    },
+    {
+      id: 'r2',
+      tipe: 'RAM',
+      foto: 'https://cdn.mos.cms.futurecdn.net/SWkrDZbyjj7EsW8mBLhpHT-970-80.jpg.webp',
+      merek: 'Corsair',
+      model: 'Vengeance LED',
+      speed: '3200',
+      ukuran: '16',
+      harga: '2000000',
+      stok: '50'
+    },
   ]
 
   constructor() { }
@@ -72,6 +116,7 @@ export class ProductsService {
     this.cpu.forEach(function (value) {
       products.push({
         id: value.id,
+        tipe: value.tipe,
         foto: value.foto,
         nama: value.merek + ' ' + value.model,
         harga: value.harga.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."),
@@ -82,6 +127,7 @@ export class ProductsService {
     this.gpu.forEach(function (value) {
       products.push({
         id: value.id,
+        tipe: value.tipe,
         foto: value.foto,
         nama: value.merek + ' ' + value.model,
         harga: value.harga.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."),
@@ -92,6 +138,7 @@ export class ProductsService {
     this.motherboard.forEach(function (value) {
       products.push({
         id: value.id,
+        tipe: value.tipe,
         foto: value.foto,
         nama: value.merek + ' ' + value.model,
         harga: value.harga.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."),
@@ -102,6 +149,7 @@ export class ProductsService {
     this.ram.forEach(function (value) {
       products.push({
         id: value.id,
+        tipe: value.tipe,
         foto: value.foto,
         nama: value.merek + ' ' + value.model,
         harga: value.harga.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."),
@@ -111,4 +159,29 @@ export class ProductsService {
 
     return [...products];
   }
+
+  getCpu(id){
+    return this.cpu.filter(cpu => {
+      return cpu.id == id;
+    });
+  }
+  
+  getGpu(id){
+    return this.gpu.filter(gpu => {
+      return gpu.id == id;
+    });
+  }
+
+  getMb(id){
+    return this.motherboard.filter(mb => {
+      return mb.id == id;
+    });
+  }
+
+  getRam(id){
+    return this.ram.filter(ram => {
+      return ram.id == id;
+    });
+  }
+  
 }

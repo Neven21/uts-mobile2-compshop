@@ -1,0 +1,185 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Product Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor = "let data of product">
+    <img [src]="data.foto" width="100%" height="auto"/>
+    <ion-card-header>
+      <ion-card-title>
+          <span style="font-weight: bold;"> {{data.merek + ' ' + data.model}} </span><br>
+          <span style="font-weight: bold;">Rp. {{data.harga}} ,- </span>
+      </ion-card-title>
+      <ion-card-subtitle>
+        Tersedia: {{data.stok}}
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <div *ngIf = "type == 'CPU'">
+    <ion-list *ngFor = "let data of product">
+      <ion-list-header>
+        <ion-label>Tentang Produk</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Merek</ion-col>
+            <ion-col style="font-weight: bold;">{{data.merek}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Model</ion-col>
+            <ion-col style="font-weight: bold;">{{data.model}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Base Clock</ion-col>
+            <ion-col style="font-weight: bold;">{{data.base}} GHz</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Boost Clock</ion-col>
+            <ion-col style="font-weight: bold;">{{data.boost}} GHz</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Cores</ion-col>
+            <ion-col style="font-weight: bold;">{{data.core}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Threads</ion-col>
+            <ion-col style="font-weight: bold;">{{data.thread}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf = "type == 'GPU'">
+    <ion-list *ngFor = "let data of product">
+      <ion-list-header>
+        <ion-label>Tentang Produk</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Merek</ion-col>
+            <ion-col style="font-weight: bold;">{{data.merek}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Model</ion-col>
+            <ion-col style="font-weight: bold;">{{data.model}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf = "type == 'Motherboard'">
+    <ion-list *ngFor = "let data of product">
+      <ion-list-header>
+        <ion-label>Tentang Produk</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Merek</ion-col>
+            <ion-col style="font-weight: bold;">{{data.merek}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Model</ion-col>
+            <ion-col style="font-weight: bold;">{{data.model}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Chipset</ion-col>
+            <ion-col style="font-weight: bold;">{{data.chipset}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Processor</ion-col>
+            <ion-col style="font-weight: bold;">{{data.prosesor}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf = "type == 'RAM'">
+    <ion-list *ngFor = "let data of product">
+      <ion-list-header>
+        <ion-label>Tentang Produk</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Merek</ion-col>
+            <ion-col style="font-weight: bold;">{{data.merek}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Model</ion-col>
+            <ion-col style="font-weight: bold;">{{data.model}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Speed</ion-col>
+            <ion-col style="font-weight: bold;">{{data.speed}} MHz</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Size</ion-col>
+            <ion-col style="font-weight: bold;">{{data.ukuran}} GB</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+

@@ -13,6 +13,9 @@ export class HomePage {
   constructor(private productService: ProductsService, private menuCtrl: MenuController) {}
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
     this.layout = 'list';
     this.products = this.productService.getAllProducts();
     this.products = this.products.filter(product => {
