@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add New</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <ion-list>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">URL Foto</ion-label>
+        <ion-input 
+          type="text"
+          ngModel
+          name="foto"
+          #fotoCtrl="ngModel"
+          required
+          placeholder="https://url/cpu.png"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item *ngIf="!fotoCtrl.valid && fotoCtrl.touched">
+        <ion-label style="font-size: 0.7em; color:red;"> URL Foto is required </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Jenis</ion-label>
+        <ion-select 
+          ngModel
+          name="tipe"
+          #tipeCtrl="ngModel"
+          required 
+          placeholder="Select One"
+          (ionChange)="onTypeChange($event)"
+        >
+          <ion-select-option value="CPU">CPU</ion-select-option>
+          <ion-select-option value="GPU">GPU</ion-select-option>
+          <ion-select-option value="MB">Motherboard</ion-select-option>
+          <ion-select-option value="RAM">RAM</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="!tipeCtrl.valid && tipeCtrl.touched">
+        <ion-label style="font-size: 0.7em; color:red;"> Jenis is required </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Merek</ion-label>
+        <ion-input 
+          type="text"
+          ngModel
+          name="merek"
+          #merekCtrl="ngModel"
+          required
+          placeholder="Intel"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item *ngIf="!merekCtrl.valid && merekCtrl.touched">
+        <ion-label style="font-size: 0.7em; color:red;"> Merek is required </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Model</ion-label>
+        <ion-input
+          type="text"
+          ngModel
+          name="model"
+          required
+          #modelCtrl="ngModel"
+          placeholder="Core I9"
+        >
+        </ion-input>
+        <ion-item *ngIf="!modelCtrl.valid && modelCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Model is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Harga</ion-label>
+        <ion-input
+          type="number"
+          ngModel
+          name="harga"
+          required
+          #hargaCtrl="ngModel"
+          placeholder="50000"
+        >
+        </ion-input>
+        <ion-item *ngIf="!hargaCtrl.valid && hargaCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Harga is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Stok</ion-label>
+        <ion-input
+          type="number"
+          ngModel
+          name="stok"
+          required
+          #stokCtrl="ngModel"
+          placeholder="50"
+        >
+        </ion-input>
+        <ion-item *ngIf="!stokCtrl.valid && stokCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Stok is required </ion-label>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+    <ion-button
+      class="text-center"
+      type="submit"
+      color="primary"
+      (click)="onSubmit()" 
+      [disabled]="!form.valid"
+    >
+      Add New Product
+    </ion-button>
+  </form>
+</ion-content>
