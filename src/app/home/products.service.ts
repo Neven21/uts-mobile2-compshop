@@ -198,7 +198,7 @@ export class ProductsService {
       boost: boost.toString(),
       core: core.toString(),
       thread: thread.toString(),
-    })
+    });
   }
   
   addMb(url, tipe, merek, model, harga, stok, chipset, processor) {
@@ -213,7 +213,7 @@ export class ProductsService {
       stok: stok.toString(),
       chipset: chipset,
       prosesor: processor,
-    })
+    });
   }
 
   addRam(url, tipe, merek, model, harga, stok, speed, ukuran) {
@@ -228,7 +228,7 @@ export class ProductsService {
       stok: stok.toString(),
       speed: speed.toString(),
       ukuran: ukuran.toString(),
-    })
+    });
   }
 
   addGpu(url, tipe, merek, model, harga, stok) {
@@ -241,7 +241,82 @@ export class ProductsService {
       model: model,
       harga: harga.toString(),
       stok: stok.toString(),
-    })
+    });
   }
-  
+
+  updateCpu(id, url, merek, model, harga, stok, base, boost, core, thread) {
+    let productEdit = this.cpu.filter(cpu => {
+      return cpu.id !== id;
+    });
+      productEdit.push({
+      id: id,
+      foto: url,
+      tipe: 'CPU',
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+      base: base.toString(),
+      boost: boost.toString(),
+      core: core.toString(),
+      thread: thread.toString(),
+    });
+
+    this.cpu = productEdit;
+  }
+
+  updateMb(id, url, merek, model, harga, stok, chipset, processor) {
+    let productEdit = this.motherboard.filter(motherboard => {
+      return motherboard.id !== id;
+    });
+    productEdit.push({
+      id: id,
+      foto: url,
+      tipe: 'Motherboard',
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+      chipset: chipset,
+      prosesor: processor,
+    });
+
+    this.motherboard = productEdit;
+  }
+
+  updateRam(id, url, merek, model, harga, stok, speed, ukuran) {
+    let productEdit = this.ram.filter(ram => {
+      return ram.id !== id;
+    });
+    productEdit.push({
+      id: id,
+      foto: url,
+      tipe: 'RAM',
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+      speed: speed.toString(),
+      ukuran: ukuran.toString(),
+    });
+
+    this.ram = productEdit;
+  }
+
+  updateGpu(id, url, merek, model, harga, stok) {
+    let productEdit = this.gpu.filter(gpu => {
+      return gpu.id !== id;
+    });
+    productEdit.push({
+      id: id,
+      foto: url,
+      tipe: 'GPU',
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+    });
+
+    this.gpu = productEdit
+  }
 }

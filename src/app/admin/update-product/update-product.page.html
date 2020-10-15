@@ -1,0 +1,232 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="presentEditAlert(form)">
+    <ion-list>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">URL Foto</ion-label>
+        <ion-input 
+          [(ngModel)]="product[0].foto"
+          type="text"
+          ngModel
+          name="foto"
+          #fotoCtrl="ngModel"
+          required
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item *ngIf="!fotoCtrl.valid && fotoCtrl.touched">
+        <ion-label style="font-size: 0.7em; color:red;"> URL Foto is required </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Merek</ion-label>
+        <ion-input 
+          [(ngModel)]="product[0].merek"
+          type="text"
+          ngModel
+          name="merek"
+          #merekCtrl="ngModel"
+          required
+          placeholder="Intel"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item *ngIf="!merekCtrl.valid && merekCtrl.touched">
+        <ion-label style="font-size: 0.7em; color:red;"> Merek is required </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Model</ion-label>
+        <ion-input
+          [(ngModel)]="product[0].model"
+          type="text"
+          ngModel
+          name="model"
+          required
+          #modelCtrl="ngModel"
+          placeholder="Core I9"
+        >
+        </ion-input>
+        <ion-item *ngIf="!modelCtrl.valid && modelCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Model is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Harga (Rp)</ion-label>
+        <ion-input
+        [(ngModel)]="product[0].harga"
+          type="number"
+          ngModel
+          name="harga"
+          required
+          #hargaCtrl="ngModel"
+          placeholder="50000"
+        >
+        </ion-input>
+        <ion-item *ngIf="!hargaCtrl.valid && hargaCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Harga is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-label style="font-weight: bold;" position="floating">Stok</ion-label>
+        <ion-input
+          [(ngModel)]="product[0].stok"
+          type="number"
+          ngModel
+          name="stok"
+          required
+          #stokCtrl="ngModel"
+          placeholder="50"
+        >
+        </ion-input>
+        <ion-item *ngIf="!stokCtrl.valid && stokCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Stok is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-label *ngIf="type!='GPU'" class="ion-margin" style="font-weight: bold;" position="floating">Detail Produk</ion-label>
+      <ion-item class="ion-margin-top" *ngIf="type=='CPU'">
+        <ion-label style="font-weight: bold;" position="floating">Base Clock (GHz) </ion-label>
+        <ion-input
+        [(ngModel)]="product[0].base"
+          type="number"
+          ngModel
+          name="base"
+          required
+          #baseCtrl="ngModel"
+          placeholder="3.5"
+        >
+        </ion-input>
+        <ion-item *ngIf="!baseCtrl.valid && baseCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Base Clock is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item *ngIf="type=='CPU'">
+        <ion-label style="font-weight: bold;" position="floating">Boost Clock (GHz)</ion-label>
+        <ion-input
+          [(ngModel)]="product[0].boost"
+          type="number"
+          ngModel
+          name="boost"
+          required
+          #boostCtrl="ngModel"
+          placeholder="4.0"
+        >
+        </ion-input>
+        <ion-item *ngIf="!boostCtrl.valid && boostCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Boost Clock is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item *ngIf="type=='CPU'">
+        <ion-label style="font-weight: bold;" position="floating">Core Count</ion-label>
+        <ion-input
+          [(ngModel)]="product[0].core"
+          type="number"
+          ngModel
+          name="core"
+          required
+          #coreCtrl="ngModel"
+          placeholder="8"
+        >
+        </ion-input>
+        <ion-item *ngIf="!coreCtrl.valid && coreCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Core Count is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item *ngIf="type=='CPU'">
+        <ion-label style="font-weight: bold;" position="floating">Thread Count</ion-label>
+        <ion-input
+          [(ngModel)]="product[0].thread"
+          type="number"
+          ngModel
+          name="thread"
+          required
+          #threadCtrl="ngModel"
+          placeholder="16"
+        >
+        </ion-input>
+        <ion-item *ngIf="!threadCtrl.valid && threadCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Thread Count is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item class="ion-margin-top" *ngIf="type=='Motherboard'">
+        <ion-label style="font-weight: bold;" position="floating"> Chipset </ion-label>
+        <ion-input
+          [(ngModel)]="product[0].chipset"
+          type="text"
+          ngModel
+          name="chipset"
+          required
+          #chipsetCtrl="ngModel"
+          placeholder="Intel Q370"
+        >
+        </ion-input>
+        <ion-item *ngIf="!chipsetCtrl.valid && chipsetCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Chipset is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item *ngIf="type=='Motherboard'">
+        <ion-label style="font-weight: bold;" position="floating"> Processor </ion-label>
+        <ion-input
+          [(ngModel)]="product[0].prosesor" 
+          type="text"
+          ngModel
+          name="processor"
+          required
+          #processorCtrl="ngModel"
+          placeholder="LGA 1151"
+        >
+        </ion-input>
+        <ion-item *ngIf="!processorCtrl.valid && processorCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Processor is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item class="ion-margin-top" *ngIf="type=='RAM'">
+        <ion-label style="font-weight: bold;" position="floating"> Speed (MHz) </ion-label>
+        <ion-input
+          [(ngModel)]="product[0].speed"
+          type="number"
+          ngModel
+          name="speed"
+          required
+          #speedCtrl="ngModel"
+          placeholder="3200"
+        >
+        </ion-input>
+        <ion-item *ngIf="!speedCtrl.valid && speedCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Speed is required </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item *ngIf="type=='RAM'">
+        <ion-label style="font-weight: bold;" position="floating"> Ukuran (GB) </ion-label>
+        <ion-input
+          [(ngModel)]="product[0].ukuran"
+          type="number"
+          ngModel
+          name="ukuran"
+          required
+          #ukuranCtrl="ngModel"
+          placeholder="16"
+        >
+        </ion-input>
+        <ion-item *ngIf="!ukuranCtrl.valid && ukuranCtrl.touched">
+          <ion-label style="font-size: 0.7em; color:red;"> Ukuran is required </ion-label>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+    <ion-button
+      class="ion-margin"
+      type="submit"
+      color="primary"
+      [disabled]="!form.valid"
+    >
+      Edit Product
+    </ion-button>
+  </form>
+</ion-content>

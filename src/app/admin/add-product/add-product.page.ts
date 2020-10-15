@@ -23,7 +23,7 @@ export class AddProductPage implements OnInit {
 
   onSubmit(form: NgForm) {
 
-    const url = form.value.url;
+    const url = form.value.foto;
     const tipe = form.value.tipe;
     const merek = form.value.merek;
     const model = form.value.model;

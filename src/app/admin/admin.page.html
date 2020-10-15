@@ -16,14 +16,14 @@
 
 <ion-content>
   <ion-list>
-    <ion-item-sliding *ngFor="let product of products">
+    <ion-item-sliding *ngFor="let product of products" #slidingItem>
       <ion-item-options side="start">
         <ion-item-option color="danger">
           Delete
         </ion-item-option>
       </ion-item-options>
       <ion-item>
-        <ion-card style="width: 100%;" [routerLink] = "['./', product.tipe, product.id]">
+        <ion-card style="width: 100%;" [routerLink] = "['./edit', product.tipe, product.id]">
           <ion-card-header>
             <ion-card-title>
               <ion-item>
@@ -42,7 +42,7 @@
         </ion-card>
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option color="tertiary">
+        <ion-item-option [routerLink] = "['./edit', product.tipe, product.id]" color="tertiary">
           Edit
         </ion-item-option>
       </ion-item-options>
