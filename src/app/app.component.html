@@ -10,12 +10,14 @@
       <ion-menu-toggle menu="menu">
         <ion-item routerLink = "home">Home</ion-item>
         <ion-item routerLink = "admin">Admin</ion-item>
-        <ion-item>About App</ion-item>
+        <ion-item routerLink = "about">About App</ion-item>
       </ion-menu-toggle>
     </ion-list>
   </ion-content>
   <ion-footer>
-    <ion-item>Exit</ion-item>
+    <ion-menu-toggle menu="menu">
+      <ion-item routerLink = "home">Exit</ion-item>
+    </ion-menu-toggle>
   </ion-footer>
 </ion-menu>
 
