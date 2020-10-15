@@ -183,5 +183,166 @@ export class ProductsService {
       return ram.id == id;
     });
   }
+
+  addCpu(url, tipe, merek, model, harga, stok, base, boost, core, thread) {
+    let n = this.cpu.length + 1;
+    this.cpu.push({
+      id: 'c' + n.toString(),
+      foto: url,
+      tipe: tipe,
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+      base: base.toString(),
+      boost: boost.toString(),
+      core: core.toString(),
+      thread: thread.toString(),
+    });
+  }
   
+  addMb(url, tipe, merek, model, harga, stok, chipset, processor) {
+    let n = this.motherboard.length + 1;
+    this.motherboard.push({
+      id: 'm' + n.toString(),
+      foto: url,
+      tipe: 'Motherboard',
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+      chipset: chipset,
+      prosesor: processor,
+    });
+  }
+
+  addRam(url, tipe, merek, model, harga, stok, speed, ukuran) {
+    let n = this.ram.length + 1;
+    this.ram.push({
+      id: 'r' + n.toString(),
+      foto: url,
+      tipe: tipe,
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+      speed: speed.toString(),
+      ukuran: ukuran.toString(),
+    });
+  }
+
+  addGpu(url, tipe, merek, model, harga, stok) {
+    let n = this.gpu.length + 1;
+    this.gpu.push({
+      id: 'g' + n.toString(),
+      foto: url,
+      tipe: tipe,
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+    });
+  }
+
+  updateCpu(id, url, merek, model, harga, stok, base, boost, core, thread) {
+    let productEdit = this.cpu.filter(cpu => {
+      return cpu.id !== id;
+    });
+      productEdit.push({
+      id: id,
+      foto: url,
+      tipe: 'CPU',
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+      base: base.toString(),
+      boost: boost.toString(),
+      core: core.toString(),
+      thread: thread.toString(),
+    });
+
+    this.cpu = productEdit;
+  }
+
+  updateMb(id, url, merek, model, harga, stok, chipset, processor) {
+    let productEdit = this.motherboard.filter(motherboard => {
+      return motherboard.id !== id;
+    });
+    productEdit.push({
+      id: id,
+      foto: url,
+      tipe: 'Motherboard',
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+      chipset: chipset,
+      prosesor: processor,
+    });
+
+    this.motherboard = productEdit;
+  }
+
+  updateRam(id, url, merek, model, harga, stok, speed, ukuran) {
+    let productEdit = this.ram.filter(ram => {
+      return ram.id !== id;
+    });
+    productEdit.push({
+      id: id,
+      foto: url,
+      tipe: 'RAM',
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+      speed: speed.toString(),
+      ukuran: ukuran.toString(),
+    });
+
+    this.ram = productEdit;
+  }
+
+  updateGpu(id, url, merek, model, harga, stok) {
+    let productEdit = this.gpu.filter(gpu => {
+      return gpu.id !== id;
+    });
+    productEdit.push({
+      id: id,
+      foto: url,
+      tipe: 'GPU',
+      merek: merek,
+      model: model,
+      harga: harga.toString(),
+      stok: stok.toString(),
+    });
+
+    this.gpu = productEdit
+  }
+
+  delete(id, tipe) {
+    if (tipe=='CPU') {
+      this.cpu = this.cpu.filter(cpu => {
+        return cpu.id !== id;
+      })
+    }
+    else if (tipe=='GPU') {
+      this.gpu = this.gpu.filter(gpu => {
+        return gpu.id !== id;
+      })
+    }
+    else if (tipe=='Motherboard') {
+      this.motherboard = this.motherboard.filter(motherboard => {
+        return motherboard.id !== id;
+      })
+    }
+    else if (tipe=='RAM') {
+      this.ram = this.ram.filter(ram => {
+        return ram.id !== id;
+      })
+    }
+    else {
+      return 'error'
+    }
+  }
 }

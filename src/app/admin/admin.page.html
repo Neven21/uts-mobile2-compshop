@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon name="menu" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Admin Home
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button routerLink = "/admin/add"><ion-icon name="add" slot="icon-only"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let product of products" #slidingItem>
+      <ion-item-options side="start">
+        <ion-item-option (click)="presentDeleteAlert(product)" color="danger">
+          Delete
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item>
+        <ion-card style="width: 100%;" [routerLink] = "['./edit', product.tipe, product.id]">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-item>
+                <ion-thumbnail slot="start" style="width: 75px; height: auto;">
+                  <ion-img [src]="product.foto">
+                  </ion-img>
+                </ion-thumbnail>
+                <ion-label class="ion-text-wrap">
+                  <span style="font-weight: bold;"> {{product.nama}} </span><br>
+                  Rp. {{product.harga}} ,- <br>
+                  Tersedia: {{product.stok}}
+                </ion-label> 
+              </ion-item>
+          </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option [routerLink] = "['./edit', product.tipe, product.id]" color="tertiary">
+          Edit
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
