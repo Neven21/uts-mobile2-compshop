@@ -18,7 +18,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let product of products" #slidingItem>
       <ion-item-options side="start">
-        <ion-item-option color="danger">
+        <ion-item-option (click)="presentDeleteAlert(product)" color="danger">
           Delete
         </ion-item-option>
       </ion-item-options>

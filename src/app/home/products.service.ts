@@ -319,4 +319,30 @@ export class ProductsService {
 
     this.gpu = productEdit
   }
+
+  delete(id, tipe) {
+    if (tipe=='CPU') {
+      this.cpu = this.cpu.filter(cpu => {
+        return cpu.id !== id;
+      })
+    }
+    else if (tipe=='GPU') {
+      this.gpu = this.gpu.filter(gpu => {
+        return gpu.id !== id;
+      })
+    }
+    else if (tipe=='Motherboard') {
+      this.motherboard = this.motherboard.filter(motherboard => {
+        return motherboard.id !== id;
+      })
+    }
+    else if (tipe=='RAM') {
+      this.ram = this.ram.filter(ram => {
+        return ram.id !== id;
+      })
+    }
+    else {
+      return 'error'
+    }
+  }
 }
