@@ -37,13 +37,13 @@
   </ion-list>
 
   <ion-grid *ngIf="layout=='grid'">
-    <ion-row *ngFor="let product of products" [routerLink] = "['./', product.tipe, product.id]">
-      <ion-col>
+    <ion-row>
+      <ion-col size ="6" *ngFor="let product of products" [routerLink] = "['./', product.tipe, product.id]">
         <ion-card>
           <ion-card-header>
             <ion-card-title>
               <ion-item>
-                <ion-thumbnail slot="start" style="width: 75px; height: auto;">
+                <ion-thumbnail slot="start" style="width: auto; height: auto;">
                   <ion-img [src]="product.foto">
                   </ion-img>
                 </ion-thumbnail>
@@ -59,27 +59,6 @@
           </ion-card-content>
         </ion-card>
      </ion-col>
-     <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>
-            <ion-item>
-              <ion-thumbnail slot="start" style="width: 75px; height: auto;">
-                <ion-img [src]="product.foto">
-                </ion-img>
-              </ion-thumbnail>
-            </ion-item>
-         </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-label class="ion-text-wrap">
-            <span style="font-weight: bold;"> {{product.nama}} </span><br>
-            Rp. {{product.harga}} ,- <br>
-            Tersedia: {{product.stok  }}
-          </ion-label> 
-        </ion-card-content>
-      </ion-card>
-   </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
